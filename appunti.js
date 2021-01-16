@@ -325,7 +325,7 @@ function eseguiOperazione(x, ...y) { //prende una stringa con il nome dell'opera
 
 //invocazione
 eseguiOperazione("somma", 12, 54, 2, 7, 12);
-eseguiOperazione("moltiplica", 4, 11, 32);
+eseguiOperazione("moltiplica", 4, 11, 32); 
 eseguiOperazione("dividi", 45, 9, 6, 17);
 
 //E' applicabile anche con degli array di valori, infatti
@@ -334,3 +334,26 @@ somma(...addendi);
 
 //e' uguale a
 somma(8, 23, 19, 72, 3, 39);
+
+//Istruzione let, serve a dichiarare variabili valide soltanto nell blocco di codice in utilizzo
+
+var x = 10;
+var y;
+let (x= 20) {
+	y = x + 1; //y = 21
+}
+y = x + y; //y = 31
+
+
+
+//Funzioni predefinite
+parseInt(); //String to int
+parseFloat(); //String to float
+isNaN(); //true se non e' un valore numerico valido, false altrimenti
+isFinite(); //True solo se l'argomento e' diverso da infinity o NaN
+escape(); // Prende in input una stringa e la codifica in hex lasciando inalterate cifre, lettere ed alcuni caratteri speciali
+unescape(); //Procedimento inverso di escape
+// Se invece le stringhe da codificare sono URI si usano le funzioni
+encodeURI();
+decodeURI();
+//In JS i nomi di funzioni non sono riservati, quindi e' possibile definire una nuova funzione, ad esempio, parseInt senza generare errori
