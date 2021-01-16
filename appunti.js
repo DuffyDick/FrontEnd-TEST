@@ -208,3 +208,93 @@ for (valore of quantita) { //ad ogni iterazione assegna alla variabile "valore" 
     totale += valore;
 }
 
+//cicli infiniti
+
+while(true){
+    //istruzioni
+}
+
+
+//Utilizzo del break
+
+var x=0;
+while (true) {
+	console.log(x);
+	// condizione di uscita
+	if (x > 100) break;
+    x++;
+}
+
+
+//Utilizzo del continue per skippare delle iterazioni
+
+var x = 0;
+while (x < 10) {
+	x++;
+	if (x > 3) continue;
+	// se x è maggiore di 3, questa istruzione non viene più eseguita
+    console.log(x);
+    
+
+//Funzioni in JS
+function nome(argomenti){
+    //istruzioni
+}
+
+//la sua invocazione verra' invocata con
+nome(valori);
+
+//l'istruzione return termina il codice di una funzione e ne restituisce il valore al codice chiamante 
+
+//Esempio di funzione e chiamata di funzione
+function somma(){
+    var z = 11+5;
+    return z;
+}
+
+var risultato = somma();
+//oppure 
+var risultato = 5 + somma() * 2;//viene trattata come un qualunque valore numerico
+
+//Esempio di funzione con argomenti
+function somma(x,y){
+    var z = x + y;
+    return z;
+}
+
+var risultato = somma(3,5); //risultato = 8
+
+//Funzioni con parametri opzionali
+
+var risultato1 = somma(11); //Aggiunge parametro mancante undefined
+var risultato2 = somma(); //Entrambi aggiunti undefined
+var risultato3 = somma(11, 5, 7, 9); //ignora 7 e 9 
+
+//In tutti i casi, js non restituisce alcun errore
+
+
+//Array arguments
+//Possiamo prendere un numero indefinito di parametri tramite uno specifico array chiamato arguments
+
+function somma() {
+    var z = 0;
+    var i;
+    for (i in arguments) {
+    z = z + arguments[i];
+    }
+    return z;
+    }
+
+//In questo modo potremo chiamare la funzione con un numero di parametri a piacere
+
+var risultato = somma(2, 78);
+var risultato = somma(17,32,4,19,52);
+
+//Argomenti con valori di default
+function somma(x = 0, y = 0) {
+    var z = x + y;
+    return z;
+}
+
+//In questo modo se al momento della chiamata non viene passato un argomento, ad esso viene assegnato il valore di default specificato, invece del valore undefined. Quindi, ad esempio, la chiamata somma() senza argomenti restituirà il valore 0 anzichè NaN.
+
