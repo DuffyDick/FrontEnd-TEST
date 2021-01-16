@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>My First Program</title>
+</head>
+ 
+<body>
+<script language = "javascript" type = "text/javascript">
+    function TrovaMassimo(...y){
+        var j = 0;
+        var max = 0;
+        for(j in y){
+            if(y[j] > max){
+                max = y[j];
+            }
+        }
+        return max;
+    }
+    var MyArray = [];
+    var i = 0;
+    for (i = 0; i < 10; i++){
+        var ind = i+1;
+        MyArray[i] = prompt("Inseririe " + ind + " elemento","");
+    }
+    var max = TrovaMassimo(...MyArray);
+    alert("Il massimo e' " + max);
+
+</script>
+</body>
