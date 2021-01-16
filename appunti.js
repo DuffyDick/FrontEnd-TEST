@@ -298,3 +298,39 @@ function somma(x = 0, y = 0) {
 
 //In questo modo se al momento della chiamata non viene passato un argomento, ad esso viene assegnato il valore di default specificato, invece del valore undefined. Quindi, ad esempio, la chiamata somma() senza argomenti restituirà il valore 0 anzichè NaN.
 
+//Rest Parameter, e' una notazione per specificare un numero indefinito di parametri aggiuntivi
+
+function eseguiOperazione(x, ...y) { //prende una stringa con il nome dell'operazione ed una lista indefinita di parametri sulla quale eseguire l'operazione. In pratica y viene trattato come un vettore degli argomenti
+    var z = 0;
+    switch (x) {
+    case "somma":
+    for (i in y) {
+    z = z + y[i];
+    }
+    break;
+    case "moltiplica":
+    for (i in y) {
+    z = z * y[i];
+    }
+    break;
+    case "dividi":
+    z = y[0]/y[1];
+    break;
+    default:
+    z = NaN;
+    break;
+    }
+    return z;
+    }
+
+//invocazione
+eseguiOperazione("somma", 12, 54, 2, 7, 12);
+eseguiOperazione("moltiplica", 4, 11, 32);
+eseguiOperazione("dividi", 45, 9, 6, 17);
+
+//E' applicabile anche con degli array di valori, infatti
+var addendi = [8, 23, 19, 72, 3, 39];
+somma(...addendi);
+
+//e' uguale a
+somma(8, 23, 19, 72, 3, 39);
