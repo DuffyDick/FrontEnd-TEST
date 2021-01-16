@@ -60,7 +60,6 @@ parseInt("12abc") //12
 parseInt("a12bc") //NaN
 parseInt("12.5") //12
 parseInt("12", 8) //12 in base 8, cioe' 10
-
 parseFloat("12.5") //12.5
 
 //si puo' verificare il tipo di una variabile in qualsiasi momento con la funzione typeof
@@ -74,3 +73,138 @@ var carattere = "Salve";
 console.log(typeof prova);     // ritorna "function"
 console.log(typeof numero);    // ritorna "number"
 console.log(typeof carattere); // ritorna "string"
+
+//Array
+var giorniDellaSettimana = ["lunedi", 
+"martedi", 
+"mercoledi",
+"giovedi",
+"venerdi",
+"Sabato", 
+"Domenica"];
+
+//si accede normalmente agli elementi partendo da 0
+var PrimoGiorno = giorniDellaSettimana[0];
+var UltimoGiorno = giorniDellaSettimana[6];
+
+//Un array puo' essere vuoto
+var MyArray = []; //Array vuoto
+
+//Si puo' lasciare una posizione indefinita con la virgola iniziale, mentre verra' ignorata la virgola finale
+
+var MyArray = [, "elemento"]; //MyArray = [undefined,"elemento"]
+var MyArray = ["elemento", "altroelemento",]; //l'ultima virgola verra' ignorata
+
+//In JS possiamo avere array contenenti elementi di tipo differente
+ var MyArray = [123, "Stringa", ["a", "b", 99]]; //ANCHE ALTRI ARRAY! PORCO DIO MA A CHE SERVE?
+
+//In questo caso, per accedere ad esempio a 99 si scrive
+
+var novantanove = MyArray[2][2];
+
+//Esistono array multidimensionali
+
+var matrice = [[24,13,1],[48,92,17],[8,56,11]];
+
+//Per accedere al valore 48 si fara'
+
+var quarantotto = matrice[1][0];
+
+//Si ha la possibilita' di assegnare a piu' variabili i valori contenuti in un array (Destrutturazione)
+
+var [PrimoGiorno,,TerzoGiorno,,,,UltimoGiorno]= giorniDellaSettimana;
+
+//Ci sono le istruzioni condizionali if e switch
+if(x >= 37) {
+    messaggio = "Hai la febbre.\n";
+    messaggio = messaggio + "Temperatura: " + x + " gradi";
+}
+
+//oppure if else
+ if (x%2 == 0){
+    messaggio = x + " e' pari";
+ } else {
+    messaggio = x + " e' dispari";
+ }
+
+
+ //Switch case
+ switch(x%2) {
+    case 0:
+        messaggio = x + " e' pari";
+        break;
+    case 1:
+        messaggio = x + " e' dispari";
+        break;
+    default:
+        messaggio = x + " non e' un numero";
+        break;
+ }
+
+ // Cicli While e Do - while
+
+ var y = 1;
+ var i = 1;
+ while (i <= 4){
+     y = y * i;
+     i++;
+ }
+
+
+ do{
+    //istruzioni
+ }
+ while(condizione)
+
+ //Ciclo for
+
+ for (inizializzazione; condizione; modifica){
+     //istruzioni
+ }
+
+ var y = 1;
+ var i;
+
+ for (i = 1; i <= 4; i++){
+     y = y * i;
+ }
+
+ //Esempio con gli array
+
+ var quantita = [12,34,45,7,19];
+ var totale = 0;
+ var i;
+ for (i = 0; i < 5; i++){
+     totale += quantita[i];
+ }
+
+ //L'opzione for e' molto flessibile
+
+var y;
+var i;
+for (i = 1, y = 1; i <=4; i++) { //doppia inizializzazione separata dalla virgola
+	y = y * i;
+}
+
+var y = 1;
+var i = 1;
+for (; i <=4; i++) { //sezioni vuote
+	y = y * i;
+}
+
+//For-in e For-of
+
+var quantita = [12,34,45,7,19];
+var totale = 0;
+var indice;
+for (indice in quantita){ //non abbiamo bisogno di specificare la dimensione e di aggiornare l'indice, assegna ed incrementa l'indice corrente alla variabile "indice" per ogni nuova iterazione
+    totale += quantita[indice];
+}
+
+var quantita = [12,34,45,7,19];
+var totale = 0;
+var valore;
+for (valore of quantita) { //ad ogni iterazione assegna alla variabile "valore" il contenuto di ciascun elemento dell'array
+    totale += valore;
+}
+
