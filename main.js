@@ -5,4 +5,4 @@ for (indice in MyArray){
     sum+=MyArray[indice];
 }
 
-console.log("porco dio");
+console.log(sum);
