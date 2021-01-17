@@ -357,3 +357,138 @@ unescape(); //Procedimento inverso di escape
 encodeURI();
 decodeURI();
 //In JS i nomi di funzioni non sono riservati, quindi e' possibile definire una nuova funzione, ad esempio, parseInt senza generare errori
+
+
+
+//Oggetti: Contenitore di valori eterogenei in una struttura unica. Tipicamente possiede:
+//Dati, detti proprieta' e rappresentati da coppie di nome e valore
+//Funzionalita', sono dette metodi e rappresentate da funzioni
+
+
+//Un modo di definire un oggetto e' a partire dal nome (object literal)
+var oggettoVuoto = {};
+var persona = { "nome": "Mario", "cognome": "Rossi"};
+
+//Tramite le parentesti definiamo le proprieta' dell'oggetto ed i suoi metodi
+//I doppi apici su nome e cognome sono obbligatori soltanto se questi nomi non seguono le regole dei nomi di variabili
+var persona = { nome: "Mario", cognome: "Rossi"}; //VALIDO
+var persona = { "primo-nome": "Mario", "secondo.nome": "Rossi"}; //Apici obbligatori
+
+//Le proprieta' possono a loro volta essere oggetti, con delle loro proprieta'
+
+var persona = {
+	nome: "Mario",
+	cognome: "Rossi",
+	indirizzo: { //Nuovo oggetto
+		via: "Via Garibaldi",
+		numero: 15,
+		CAP: "00100",
+		citta: "Roma"
+	}
+};
+
+//Per accedere alle proprieta' di un oggetto si utilizza la notazione "."
+var nome = persona.nome;
+
+//Mentre sono obbligatori gli apici se non rispetta la notazione delle variabili
+var nome = persona["nome"];
+
+
+//Provando ad assegnare un valore ad una proprieta; non definita, di fatto la crea
+persona.eta = 32; //crea la proprieta' eta
+
+//I metodi sono le attivita' che un oggetto puo' compiere
+function visualizzaNomeCognome() { return "Mario Rossi"; }
+persona.nomeCognome = visualizzaNomeCognome; //Assegnamo la funzione stessa alla proprieta'. Non il suo risultato
+
+//Contenendo una funzione, quindi, la proprieta' nomeCognome e' di fatto un metodo, e la chiameremo aggiungendo le parentesi tonde
+var nomeCognome = persona.nomeCognome();
+
+//Esiste anche un metodo di definizione alternativo
+persona.nomeCognome = function () { return "Mario Rossi"; }
+
+//Con la parola chiave this, ci si riferisce ad una proprieta' dell'oggetto invocato dal metodo
+persona.nomeCognome = function () { return this.nome + " " + this.cognome; } //Restituisce nome e cognome anche modificandoli, a differenza della precedente
+
+//Se si cambia il valore  di una propieta' ad un variabile contenente un oggetto, questo cambia anche nell'oggetto
+var persona = {nome: "Mario", cognome: "Rossi"};
+var altraPersona = persona;
+altraPersona.nome = "Giuseppe"; //Adesso la proprieta' persona.nome sara' Giuseppe, e non piu' Mario
+
+//In pratica il passaggio delle variabili primitive avviene per valore. Quella degli oggetti per riferimento
+
+
+//Oggetti predefiniti
+//L'oggetto predefinito si chiama Object e tutti gli atri vengono creati sulla base di questo. Avranno quindi a disposizione alcuni metodi predefiniti 
+var persona = new Object();
+persona.nome = "Mario";
+persona.cognome = "Rossi";
+//L'operatore new crea una nuova istanza di un oggetto vuoto
+//Con object e' possibile creare oggetti a partire da qualunque espressione javascript
+var numero      = new Object(12);
+var altroNumero = new Object(3*2);
+var stringa     = new Object("test");
+var persona     = new Object({nome: "Mario", cognome: "Rossi"});
+
+//In questo modo, ad esempio nel primo caso, si creano oggetti specializzati nella manipolazione di valori numerici, con specifiche proprieta' e metodi
+
+//Ci sono metodi condivisi da tutti gli oggetti: ToString e ValueOf
+
+var x = new Object(32);
+x.toString();            //restituisce "32"
+
+
+
+var x = new Object(32);
+x.valueOf();             //restituisce 32
+
+
+
+//Un particolare oggetto si chiama Number, che fornisce metodi e proprieta' per la manipolazione numerica
+//Si puo' creare a partire da qualunque espressione numerica
+var x = new Number(123);
+var y = new Number(3.14);
+
+//Particolari metodi di Number
+EPSILON -> la piu' piccola differenza tra la rappresentazione di due numeri 
+MAX_VALUE -> Il piu' grande positivo rappresentabile
+MIN_VALUE -> Il piu' piccolo positivo (!=0) rappresentabile
+NaN -> Not a Number
+NEGATIVE_INFINITY -> rappresenta infinito negativo
+POSITIVE_INFINITY -> rappresenta infinito positivo
+//Queste proprieta' sono specifiche di number, e non vengono trasferite alle sue istanze, quindi ci si dovra' rifare sempre all'oggetto Number per chiamarle
+var x = new Number(239);
+if (x < Number.MAX_VALUE) {
+
+
+	...
+}
+
+
+//Tra i metodi di Number troviamo
+isFinite(n) -> true se n e' finito
+isInteger(n) -> true se n e' un intero 
+isNaN(n) -> true se n non e' un valore numerico
+
+//Ciascuna istanza di Number ha a disposizione tre metodi di rappresentazione
+toExponential(n) //Restituisce la rappresentazione esponenziale di n sotto forma di stringa
+
+var x = new Object(123);
+var y = x.toExponential(); //y = "1.23e+2"
+
+toFixed(n) //restituisce il valore sotto forma di stringa formattato in un numero di cifre decimali fissate 
+
+var x = new Object(123.4);
+var y = x.toFixed(); //y = "123"
+var z = x.toFixed(2); //z = "123.40"
+
+
+toPrecision(n) //Restituisce sotto forma di stringa un valore numerico con un numero di cifre significative specificato
+var x = new Number(123.4);
+x.toPrecision();	//"123.4"
+x.toPrecision(1);	//"1e+2"
+x.toPrecision(2);	//"1.2e+2"
+x.toPrecision(3);	//"123"
+x.toPrecision(4);	//"123.4"
+x.toPrecision(5);	//"123.40"
+x.toPrecision(6);	//"123.400"
