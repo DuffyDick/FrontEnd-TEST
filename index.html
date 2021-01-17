@@ -9,18 +9,18 @@
         var j = 0;
         var max = 0;
         for(j in y){
-            if(y[j] > max){
+            if(parseInt(y[j]) > parseInt(max)){
                 max = y[j];
             }
         }
         return max;
     }
+
     var MyArray = [];
     var i = 0;
     for (i = 0; i < 10; i++){
-        var ind = i+1;
-        MyArray[i] = prompt("Inseririe " + ind + " elemento","");
-    }
+        MyArray[i] = prompt("Inseririe " + (i+1) + " elemento","");
+    }    
     var max = TrovaMassimo(...MyArray);
     alert("Il massimo e' " + max);
 
