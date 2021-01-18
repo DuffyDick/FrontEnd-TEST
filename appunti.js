@@ -492,3 +492,119 @@ x.toPrecision(3);	//"123"
 x.toPrecision(4);	//"123.4"
 x.toPrecision(5);	//"123.40"
 x.toPrecision(6);	//"123.400"
+
+
+//Funzioni matematiche
+//Javascript prevede il supporto all'oggetto Math. Math non consente la creazione di altre istanze 
+
+//Proprieta' di Math
+E -> costante di Eulero
+LN2 -> logaritmo di 2
+LN10 -> Logaritmo di 10
+PI -> Valore di pi greco
+SQRT1_2 -> Radice quadrata di un mezzo
+SQRT2 -> Radice quadrata di due
+
+
+//Esempio di utilizzo
+if (x > Math.PI) {
+    console.log("Valore maggiore di pi greco");
+}
+console.log("Il doppio di pi greco è " + Math.PI * 2);
+
+//Alcuni metodi Javascript sono tra i piu' comuni tra le funzioni matematiche
+Math.max(89, 13, 6.4, 49, 87.2, 121, 40); //121
+Math.min(89, 13, 6.4, 49, 87.2, 121, 40); //6.4
+Math.pow(4, 3); //4³ = 64
+Math.sqrt(144); //12
+Math.ceil(3.4); //4
+Math.floor(3.4) //3
+Math.round(3.4) //3
+Math.round(3.6) //4
+
+//Numeri casuali con il metodo Random() che genera numeri casuali tra 0 e 1
+function generaInteroCasuale(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min); //Combinandolo con floor si possono generare tra un max ed un min dato
+}
+
+//Altri metodi JS
+Math.abs() -> Valore assoluto di un numero
+Math.log() -> Logaritmo naturale in base E 
+Math.sin/cos/tan/atan() -> seno coseno tangente e arcotangente //Fondamentali per gestire la grafica
+Math.atan2(y,x) ->  arcotangente del quoziente tra y e x. In altre parole fornisce il coefficiente numerico  //Utile per la grafica
+
+
+//Stringhe in JS
+//Tramite l'operatore new possiamo creare istanze dell'oggetto String
+var x = new String("Una nuova stringa");
+
+//Lunghezza di una stringa
+var x = new String("Una nuova stringa");
+var y = x.length;		//17, gli spazi vengono contati
+
+
+//Estrarre un carattere da una stringa (Ci sono due approcci)
+var x = "Una nuova stringa".charAt(2); // x = 'a'
+var x = "Una nuova stringa"[2]; //x = 'a'
+
+
+//Sostituire un carattere in una stringa
+var x = "Una nuova stringa".replace("s", "S"); //Una nuova Stringa
+
+
+//Trovare lo occorrenze in una stringa
+var x = "Una nuova stringa".indexOf("nuova"); //x = 1
+
+//Posizione dell'ultima occorrenza in una stringa
+var x = "Una nuova stringa".lastIndexOf("n"); //n = 14
+
+//Per entrambi i metodi si puo' specificare un parametro opzionale che indica la posizione di partenza in una stringa
+var x = "Una nuova stringa".indexOf("a", 4); //x = 8
+
+//Estrarre una sottostringa
+//substr() consente di estrarre una sottostringa di un certo numero di caratteri  a partire da una certa posizione
+var x = "Una nuova stringa".substr(4, 5); //x = "nuova"
+
+//substring() invece estrae una sottostringa compresa tra due posizioni
+var x = "Una nuova stringa".substring(4, 9); // x = "nuova", NB:l'ultimo carattere non e' incluso
+//Se il secondo carattere viene omesso, verra' estratto tutto fino alla fine della stringa
+
+//Creare array di stringhe con il metodo split()
+var x = "Una nuova stringa".split("n"); //x == ["U", "a ", "uova stri", "ga"], la stringa viene splittata ad ogni occorrenza di n. 
+
+//Per ottenere invece l'array dei caratteri di una stringa si usano i doppi apici vuoti
+var x = "Una nuova stringa".split(""); //x == ["U", "n", "a", " ", "n", "u", "o", "v", "a", " ", "s", "t", "r", "i", "n", "g", "a"]
+
+//Split prevede un secondo argomento che indica il numero di elementi che sovra' contenere l'array
+var x = "Una nuova stringa".split("", 5); //x == ["U", "n", "a", " ", "n"]
+
+//Maiuscole e minuscole
+var x = "Una nuova stringa".toLowerCase(); //x == "una nuova stringa"
+var y = "Una nuova stringa".toUpperCase(); //y == "UNA NUOVA STRINGA"
+
+//Gestire gli spazi vuoti
+var x = " Una nuova stringa ".trim(); //x == "Una nuova stringa", rimuove gli spazi vuoti all'inizio e alla fine della stringa
+var y = "Una nuova stringa".startsWith("Una");  //true, verifica se una stringa inizia con la stringa specificata nell'argomento
+var z = "Una nuova stringa".endsWith(".");	    //false, verifica se una stringa finisce con la stringa specificata nell'argomento
+
+//Wrapper HTML
+var x = "Una nuova stringa".anchor("test"); //x == "<a name='test'>Una nuova stringa</a>"
+var y = "Una nuova stringa".italics(); //y == "<i>Una nuova stringa</i>"
+var z = "Una nuova stringa".bold(); //z == "<b>Una nuova stringa</b>"
+
+
+//Template string, permettono di scrivere facilmente stringhe complesse come
+var messaggio = "Attenzione!\nIl valore inserito " + valore + " non è valido perché esso deve essere compreso tra " + valoreIniziale + " e " + valoreFinale + ".\nSi prega di riprovare.";
+//Una template string sara' inclusa in due backtick: ` ` (alt + 96 su layout italiano)
+//La stringa precedente potra' quindi essere riscritta come
+var messaggio = `Attenzione!\nIl valore inserito ${valore} non è valido perché esso deve essere compreso tra ${valoreIniziale} e ${valoreFinale}.\nSi prega di riprovare.`;
+//Si possono anche inserire espressioni di qualunque tipo
+var somma = `La somma di ${a} e ${b} è ${a+b}`;
+
+//Tagged template string, sono semplici template string precedute da un tag
+var somma = maiuscolo`La somma di ${a} e ${b} è ${a+b}`;
+//Il tag maiuscolo indica che sara' effettuata una elaborazione da una funzione con lo stesso nome, infatti il nome del tag corrisponde ad una funzione alla quale viene passato come primo argomento
+//un array che contiene le sottostringhe costanti, e come parametri successivi le espressioni in essa contenute.
+function maiuscolo(strings, a, b, c) {
+	return (`${strings[0]}${a}${strings[1]}${b}${strings[2]}${c}`).toUpperCase();
+}
